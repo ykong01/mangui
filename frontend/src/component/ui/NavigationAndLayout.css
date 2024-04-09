@@ -1,0 +1,51 @@
+.btn-toggle {
+  display: inline-flex;
+  align-items: center;
+  font-weight: lighter;
+  color: #212529;
+  border: 0;
+  width: 100%;
+}
+
+.btn-toggle:hover,
+.btn-toggle:focus {
+  /*color: #009e5d;*/
+  color: #f63414;
+}
+
+.btn-toggle::before {
+  width: 1.25em;
+  line-height: 0;
+}
+
+.btn-toggle-nav button {
+  margin-left: 1rem;
+  text-decoration: none;
+}
+
+.btn-toggle-nav button:hover,
+.btn-toggle-nav button:focus {
+  /*color: #009e5d;*/
+  color: #f63414;
+}
+
+.btn-toggle-nav-active {
+  /*color: #009e5d;*/
+  color: #f63414;
+}
+
+.update-collection-count:hover {
+  color: #f63414;
+}
+
+@media screen and (min-width: 930px) {
+    main {
+        grid-template-columns: fit-content(30%) 4px 1fr;
+    }
+}
+@media screen and (max-width: 930px) {
+    main {
+        grid-template-columns: 1fr;
+        height: auto !important;
+    }
+}
