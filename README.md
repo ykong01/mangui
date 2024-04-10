@@ -4,15 +4,15 @@
 
 <div align="center">
   
-  ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/Prime1Code/mangui/buildDeployStartAll.yml)
-  ![GitHub Release](https://img.shields.io/github/v/release/Prime1Code/mangui)
-  ![GitHub License MIT](https://img.shields.io/github/license/Prime1Code/mangui?color=%23ff8800)
+  <img alt="Build Status" src="https://img.shields.io/github/actions/workflow/status/Prime1Code/mangui/buildDeployStartAll.yml"/>
+  <img alt="GitHub Release" src="https://img.shields.io/github/v/release/Prime1Code/mangui">
+  <img alt="License" src="https://img.shields.io/github/license/Prime1Code/mangui?color=%23ff8800"/>
   
 </div>
 
-# Mangui - MongoDB Management Tool
+# Mangui - MongoDB Management UI Tool
 
-Mangui is a powerful multi-user MongoDB Management Tool designed as a React Web App with a Spring Boot Backend. It
+Mangui is a powerful multi-user MongoDB Management UI Tool designed as a React Web App with a Spring Boot Backend. It
 simplifies the process of managing MongoDB databases by offering a wide range of features and functionalities, including
 Docker support for easy deployment.
 
