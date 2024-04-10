@@ -1,6 +1,7 @@
 <div align="center">
   
   ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/Prime1Code/mangui/buildDeployStartAll.yml)
+  ![GitHub Release](https://img.shields.io/github/v/release/Prime1Code/mangui)
   ![GitHub License MIT](https://img.shields.io/github/license/Prime1Code/mangui?color=%23ff8800)
   
 </div>
