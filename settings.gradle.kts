@@ -1,1 +1,1 @@
-rootProject.name = "mongodb-ui"
+rootProject.name = "mangui"

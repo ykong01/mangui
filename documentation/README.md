@@ -5,8 +5,8 @@
 ## Clone repository
 
 ```sh
-git clone git@github.com:Prime1Code/mongodb-ui.git
-cd mongodb-ui
+git clone git@github.com:Prime1Code/mangui.git
+cd mangui
 ```
 
 ## Dev environment without docker
