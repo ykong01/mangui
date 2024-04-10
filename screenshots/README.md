@@ -9,7 +9,7 @@
 
 ## Login
 
-![1](login.JPG)
+![1](login.jpg)
 
 ## Collections
 
