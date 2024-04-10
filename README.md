@@ -1,3 +1,7 @@
+<p align="center">
+  <img width="20%" src="screenshots/ManguiLogo.svg">
+</p>
+
 <div align="center">
   
   ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/Prime1Code/mangui/buildDeployStartAll.yml)
@@ -5,10 +9,6 @@
   ![GitHub License MIT](https://img.shields.io/github/license/Prime1Code/mangui?color=%23ff8800)
   
 </div>
-
-<p align="center">
-  <img width="20%" src="screenshots/ManguiLogo.svg">
-</p>
 
 # Mangui - MongoDB Management Tool
 
