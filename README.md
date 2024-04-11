@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="20%" src="screenshots/ManguiLogo.svg">
+  <img width="200px" src="screenshots/ManguiLogo.svg">
 </p>
 
 <div align="center">
