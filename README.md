@@ -23,7 +23,7 @@ Docker support for easy deployment.
 - **Sorting and Pagination**: Easily sort and paginate through large datasets, with customizable items per page.
 - **Index Management**: Manage database indexes efficiently through intuitive modals.
 - **Import and Export**: Import data with customizable file sizes and export data effortlessly.
-- **Query Support**: Utilize autocomplete for MongoDB keywords such as $in, $exists, $not, and more. Enjoy automatic
+- **Query Support**: Multi-line query support & utilize autocomplete for MongoDB keywords such as $in, $exists, $not, and more. Enjoy automatic
   bracket completion for queries.
 - **User Security**: Ensure per-user data security with access and refresh tokens. Manage users and their permissions
   through user management modals.
