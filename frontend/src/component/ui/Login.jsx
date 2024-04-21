@@ -140,7 +140,7 @@ export default function Login () {
                                   : null}
                             </button>
                             )}
-                        <p className="mt-12 text-black/50">&copy; 2024</p>
+                        <p className="mt-12 text-black/50">Made with ❤️ in Germany - <a className="underline" href="https://github.com/Prime1Code/mangui">Github</a></p>
                     </form>
                 </div>
             </main >
