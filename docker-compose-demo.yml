@@ -14,7 +14,7 @@ services:
       - mangui_mangui
 
   mangui-backend-demo:
-    image: mangui/backend:latest
+    image: prime1docker/mangui-backend:latest
     container_name: mangui-backend-demo
     depends_on:
       - mongo-demo
@@ -31,7 +31,7 @@ services:
     restart: always
 
   mangui-frontend-demo:
-    image: mangui/frontend:latest
+    image: prime1docker/mangui-frontend:latest
     container_name: mangui-frontend-demo
     depends_on:
       - mangui-backend-demo
