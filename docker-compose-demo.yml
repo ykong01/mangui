@@ -1,23 +1,23 @@
-version: '3.8'
+#version: '3.8'
 
 services:
-  mongo:
+  mongo-demo:
     image: mongo:latest
-    container_name: mongo
+    container_name: mongo-demo
     environment:
       - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
       - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
       - MONGO_INITDB_DATABASE=admin
     ports:
-      - "127.0.0.1:27017:27017"
+      - "127.0.0.1:27018:27017"
     networks:
-      - mangui
+      - mangui_mangui
 
-  mangui-backend:
+  mangui-backend-demo:
     image: mangui/backend:latest
-    container_name: mangui-backend
+    container_name: mangui-backend-demo
     depends_on:
-      - mongo
+      - mongo-demo
     environment:
       - VIRTUAL_HOST=${MANGUI_VHOST}
       - VIRTUAL_PORT=8080
@@ -27,42 +27,23 @@ services:
       - MANGUI_AVAILABLE_HOSTS=${MANGUI_HOSTS}
       - MANGUI_JWT_SECRET=${MANGUI_JWT_SECRET_VALUE}
     networks:
-      - mangui
+      - mangui_mangui
     restart: always
 
-  mangui-frontend:
+  mangui-frontend-demo:
     image: mangui/frontend:latest
-    container_name: mangui-frontend
+    container_name: mangui-frontend-demo
     depends_on:
-      - mangui-backend
+      - mangui-backend-demo
     ports:
       - "3000"
     environment:
+      - LETSENCRYPT_HOST=${MANGUI_VHOST}
       - VIRTUAL_HOST=${MANGUI_VHOST}
       - VIRTUAL_PORT=3000
       - VIRTUAL_PATH=/
     networks:
-      - mangui
-    restart: always
-
-  nginx-proxy:
-    image: nginxproxy/nginx-proxy
-    container_name: nginx-proxy
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - conf:/etc/nginx/conf.d
-      - ${PWD}/conf/client_max_body_size.conf:/etc/nginx/conf.d/client_max_body_size.conf
-      - ${PWD}/vhost:/etc/nginx/vhost.d:rw
-      - html:/usr/share/nginx/html
-      - certs:/etc/nginx/certs:ro
-      - /var/run/docker.sock:/tmp/docker.sock:ro
-    depends_on:
-      - mangui-backend
-      - mangui-frontend
-    networks:
-      - mangui
+      - mangui_mangui
     restart: always
 
 volumes:
@@ -73,4 +54,5 @@ volumes:
   acme:
 
 networks:
-  mangui:
+  mangui_mangui:
+    external: true
