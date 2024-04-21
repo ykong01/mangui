@@ -1,4 +1,4 @@
-version: '3.8'
+#version: '3.8'
 
 services:
   mongo:
@@ -9,7 +9,7 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
       - MONGO_INITDB_DATABASE=admin
     ports:
-      - "27017:27017"
+      - "127.0.0.1:27017:27017"
     networks:
       - mangui
 
