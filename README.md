@@ -27,7 +27,7 @@ Docker support for easy deployment.
   bracket completion for queries.
 - **User Security**: Ensure per-user data security with access and refresh tokens. Manage users and their permissions
   through user management modals.
-- **Toast Notifications**: Receive toast notifications for important events and actions, enhancing user experience and
+- **Notifications**: Receive toast notifications for important events and actions, enhancing user experience and
   providing real-time feedback.
 - **Customizable Data Views**: Enjoy customizable data views with themes, display options for JSON data (nesting,
   collapsing, etc.), and perform actions like "copy to clipboard" and more.
@@ -75,5 +75,5 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-For more information, visit our [website](https://github.com/Prime1Code/mangui) or check out
+For more information, visit our [website](https://prime1code.github.io/mangui/) or check out
 our [GitHub repository](https://github.com/Prime1Code/mangui).
