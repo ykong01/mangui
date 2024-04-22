@@ -9,16 +9,22 @@ git clone git@github.com:Prime1Code/mangui.git
 cd mangui
 ```
 
-## Dev environment without docker
+## Local Dev Environment without Docker
 
-Build the React app and Spring Boot app separately with your IDE of choice. Afterwards:<br>
+Build the React app and Spring Boot app. <br>
+`gradle` and `npm` are required to run the build-script.
+```sh
+./buildBackendAndFrontend.sh
+```
+
+Afterwards:<br>
 
 * `Start` your `Spring Boot` app with Spring Boot profile `spring.profiles.active=dev`
 * `Start` you `React` app and open url [localhost:3000/login](localhost:3000/login)
 
-## Dev environment with docker
+## Dev environment with Docker
 
-Just start the `script` below. It builds the artifacts and creates a `docker environment` with
+Just start the `script` below. It builds the artifacts and creates a `Docker environment` with
 
 * `mongo` database
 * `backend` app
@@ -30,48 +36,87 @@ Just start the `script` below. It builds the artifacts and creates a `docker env
 ```
 
 Head over to [localhost/login](localhost/login) and use username and password from the `.env`
-file (`MONGO_INITDB_ROOT_USERNAME` and `MONGO_INITDB_ROOT_PASSWORD`)
+file (`MONGO_INITDB_ROOT_USERNAME` and `MONGO_INITDB_ROOT_PASSWORD`). <br>
 
-## Server environment with docker
+> [!NOTE]  
+> Default value for username and password is `admin`
+
+## Server environment with Docker
+Create a directory for your Mangui app.
+```sh
+mkdir mangui
+cd mangui
+```
+
+### Using pre-built Docker images
+
+Create a folder structure like this. <br>
+The project comes with all the `necessary` files in the corresponding folders.
+
+```
+├── mangui
+│  ├── certs
+│  ├── conf
+│  │   └── client_max_body_size.conf
+│  ├── Docker-compose-server-hub.yml
+│  ├── .env
+│  ├── vhost
+│  │   ├── default
+│  │   └── <vhost>_location
+```
+
+Start your Mangui app with the following CLI command
+```sh
+Docker-compose -f Docker-compose-server-hub.yml up --force-recreate -d
+```
+
+#### And thats it! 🎉 Have fun with Mangui <img src="../screenshots/ManguiLogo.svg" width="16px"/>
+
+
+### Using frontend and backend build artifcats
+
+In case you are building your own `frontend` and `backend` artifacts and do not want to use the pre-built Docker images, follow the instructions below:<br>
 
 The server script `createDockerImagesAndRun.sh` requires the `frontend` and `backend` artifacts as well es
 required `config files` in certain directories.<br>
-The default folder structure looks like this:
+Create a folder structure that looks like this:
 
 ```
-├── be
-│   ├── build
-│   │   └── libs
-│   │       └── mongodb.jar
-│   └── dockerfile
-├── certs
-├── docker-compose.yml
-├── nginx_fe
-│   ├── build
-│   │   ├── asset-manifest.json
-│   │   ├── favicon.png
-│   │   ├── index.html
-│   │   ├── ManguiLogo.png
-│   │   ├── ManguiLogo.svg
-│   │   ├── manifest.json
-│   │   ├── robots.txt
-│   │   └── static
-│   │       ├── css
-│   │       │   ├── main.32752f7b.css
-│   │       │   ├── main.32752f7b.css.map
-│   │       └── js
-│   │           ├── main.3ca5aa77.js
-│   │           ├── main.3ca5aa77.js.LICENSE.txt
-│   │           ├── main.3ca5aa77.js.map
-│   ├── dockerfile
-│   └── nginx.conf
-└── vhost
-│   ├── default
-│   └── <vhost>_location
-└── conf
-    └── client_max_body_size.conf
+├── createDockerImagesAndRun.sh
+├── mangui
+│   ├── be
+│   │   ├── build
+│   │   │   └── libs
+│   │   │       └── mongodb.jar
+│   │   └── Dockerfile
+│   ├── certs
+│   ├── conf
+│   │   └── client_max_body_size.conf
+│   ├── Docker-compose-server.yml
+│   ├── .env
+│   ├── nginx_fe
+│   │   ├── build
+│   │   │   ├── asset-manifest.json
+│   │   │   ├── favicon.png
+│   │   │   ├── index.html
+│   │   │   ├── ManguiLogo.png
+│   │   │   ├── ManguiLogo.svg
+│   │   │   ├── manifest.json
+│   │   │   ├── robots.txt
+│   │   │   └── static
+│   │   │       ├── css
+│   │   │       │   ├── main.32752f7b.css
+│   │   │       │   ├── main.32752f7b.css.map
+│   │   │       └── js
+│   │   │           ├── main.3ca5aa77.js
+│   │   │           ├── main.3ca5aa77.js.LICENSE.txt
+│   │   │           ├── main.3ca5aa77.js.map
+│   │   ├── Dockerfile
+│   │   └── nginx.conf
+│   ├── vhost
+│   │   ├── default
+│   │   └── <vhost>_location
 ```
-
 <details>
   <summary><strong>If you want to change the folder structure</strong></summary>
 
@@ -87,29 +132,31 @@ nano createDockerImagesAndRun.sh
 
 > [!NOTE]  
 > Edit the `client_max_body_size.conf` file to set the max upload size for file imports via the web app.
-> The size has to match the value `MANGUI_MAX_FILE_SIZE` in the `docker-compose-server.yml` file (see below).
+> The size has to match the value `MANGUI_MAX_FILE_SIZE` in the `Docker-compose-server.yml` file (see below).
 
-Check the file below and change directories if needed.<br>
+
 Edit the `.env` file to configure the necessary properties for the backend app and containers.<br>
-Optionally edit the `docker-compose-server.yml` file to configure volumes or ports if needed.
 
 ```sh
 nano .env
 ```
 
+`Optionally` edit the `Docker-compose-server.yml` file to configure volumes or ports if needed.
 <details>
   <summary><strong>Optional</strong></summary>
 
 ```sh
-nano docker-compose-server.yml
+nano Docker-compose-server.yml
 ```
 
 </details>
+
+### Final step
 
 ```sh
 ./createDockerImagesAndRun.sh
 ```
 
-# And thats it! 🎉 Have fun with Mangui <img src="../screenshots/ManguiLogo.svg" width="4%"/>
+#### And thats it! 🎉 Have fun with Mangui <img src="../screenshots/ManguiLogo.svg" width="16px"/>
 
 ### [back](../README.md)
