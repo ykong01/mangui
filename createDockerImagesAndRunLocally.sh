@@ -5,6 +5,7 @@ docker build -t mangui-backend .
 # frontend
 cd ./frontend
 rm -rf build
+npm install
 npm run build
 docker build -t mangui-frontend .
 # docker restart

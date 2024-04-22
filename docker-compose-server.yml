@@ -53,8 +53,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - conf:/etc/nginx/conf.d
-      - ${PWD}/conf/client_max_body_size.conf:/etc/nginx/conf.d/client_max_body_size.conf
+      - ${PWD}/conf:/etc/nginx/conf.d
       - ${PWD}/vhost:/etc/nginx/vhost.d:rw
       - html:/usr/share/nginx/html
       - certs:/etc/nginx/certs:ro
