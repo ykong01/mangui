@@ -1,3 +1,4 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 // https://kotlinlang.org/docs/jvm-create-project-with-spring-boot.html
@@ -8,7 +9,7 @@ plugins {
     kotlin("plugin.spring") version "2.1.10"
 }
 
-group = "com.majaku"
+group = "com.hejapp"
 version = "1.0.0-SNAPSHOT"
 
 java {
@@ -30,9 +31,9 @@ dependencies {
 }
 
 tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        freeCompilerArgs = listOf("-Xjsr305=strict")
-        jvmTarget = "17"
+    compilerOptions {
+        freeCompilerArgs.set(listOf("-Xjsr305=strict"))
+        jvmTarget.set(JvmTarget.JVM_17)
     }
 }
 
