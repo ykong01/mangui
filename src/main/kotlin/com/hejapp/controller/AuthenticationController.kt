@@ -6,6 +6,8 @@ import com.hejapp.domain.LoginRequest
 import com.hejapp.exception.RefreshTokenMissingException
 import com.hejapp.security.JwtUtils
 import com.hejapp.service.LoginService
+import jakarta.servlet.http.HttpServletRequest
+import jakarta.servlet.http.HttpServletResponse
 import org.bson.Document
 import org.bson.json.JsonObject
 import org.springframework.core.env.Environment
@@ -14,8 +16,6 @@ import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.util.StringUtils
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.util.WebUtils
-import javax.servlet.http.HttpServletRequest
-import javax.servlet.http.HttpServletResponse
 
 @RestController
 @RequestMapping("/auth")

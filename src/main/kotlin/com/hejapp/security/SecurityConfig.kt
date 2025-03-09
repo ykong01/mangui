@@ -6,12 +6,14 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.scheduling.annotation.EnableScheduling
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.http.SessionCreationPolicy.STATELESS
 import org.springframework.security.web.SecurityFilterChain
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
 
 @Configuration
 @EnableScheduling
+@EnableWebSecurity
 class SecurityConfig(
     private val unauthorizedHandler: AuthEntryPoint,
     private val cookieUtils: CookieUtils
@@ -24,16 +26,16 @@ class SecurityConfig(
 
     @Bean
     fun filterChain(http: HttpSecurity): SecurityFilterChain {
-        http.cors().and().csrf().disable()
-            .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
-            .sessionManagement().sessionCreationPolicy(STATELESS).and()
-            .authorizeRequests()
-            .antMatchers("/auth/login", "/auth/logout", "/auth/hosts", "/auth/token/obtain")
-            .permitAll()
-            .antMatchers("/auth/user")
-            .fullyAuthenticated()
-            .anyRequest()
-            .fullyAuthenticated()
+        http
+            .cors {}
+            .csrf { it.disable() }
+            .exceptionHandling { it.authenticationEntryPoint(unauthorizedHandler) }
+            .sessionManagement { it.sessionCreationPolicy(STATELESS) }
+            .authorizeHttpRequests {
+                it.requestMatchers("/auth/login", "/auth/logout", "/auth/hosts", "/auth/token/obtain").permitAll()
+                it.requestMatchers("/auth/user").fullyAuthenticated()
+                it.anyRequest().fullyAuthenticated()
+            }
 
         http.addFilterBefore(jwtTokenFilter(), UsernamePasswordAuthenticationFilter::class.java)
 

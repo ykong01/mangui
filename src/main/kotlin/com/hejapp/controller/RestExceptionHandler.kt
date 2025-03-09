@@ -6,6 +6,7 @@ import com.hejapp.exception.SessionExpiredException
 import com.mongodb.MongoCommandException
 import com.mongodb.MongoException
 import com.mongodb.WriteConcernException
+import jakarta.servlet.http.HttpServletResponse
 import org.bson.json.JsonParseException
 import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus.UNAUTHORIZED
@@ -13,7 +14,6 @@ import org.springframework.http.ResponseEntity
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
-import javax.servlet.http.HttpServletResponse
 
 @RestControllerAdvice
 class RestExceptionHandler(
