@@ -5,14 +5,14 @@
   "proxy": "http://localhost:8080",
   "//": "override versions of nth-check and postcss to fix security vulnerabilities with react-scripts 5.0.1, see overrides at end",
   "dependencies": {
-    "@heroicons/react": "^2.1.1",
+    "@heroicons/react": "^2.2.0",
     "nth-check": "^2.1.1",
-    "postcss": "^8.4.35",
+    "postcss": "^8.5.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.0",
     "react-toastify": "^10.0.4",
-    "react18-json-view": "^0.2.7"
+    "react18-json-view": "^0.2.9"
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
