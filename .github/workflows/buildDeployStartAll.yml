@@ -92,6 +92,15 @@ jobs:
           SOURCE: "build/libs/"
           TARGET: ${{ secrets.REMOTE_TARGET_BACKEND }}
 
+      - name: Delete old frontend builds
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          key: ${{ secrets.REMOTE_SSH_KEY }}
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          script: |
+            ./deleteOldFrontendBuilds.sh
+
       - name: Deploy Frontend to Server
         uses: easingthemes/ssh-deploy@main
         env:
