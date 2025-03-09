@@ -5,6 +5,11 @@ docker build -t mangui-backend .
 # frontend
 cd ../nginx_fe
 docker build -t mangui-frontend .
+# upload tags
+docker tag mangui-frontend:latest prime1docker/mangui-frontend:latest
+docker push prime1docker/mangui-frontend:latest
+docker tag mangui-backend:latest prime1docker/mangui-backend:latest
+docker push prime1docker/mangui-backend:latest
 # docker restart
 cd ..
 docker-compose stop
