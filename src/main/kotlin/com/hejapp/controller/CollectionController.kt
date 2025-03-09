@@ -8,6 +8,7 @@ import com.hejapp.exception.BulkWriteException
 import com.mongodb.client.MongoCollection
 import com.mongodb.client.model.InsertManyOptions
 import com.mongodb.client.model.Sorts
+import jakarta.servlet.http.HttpServletResponse
 import org.bson.BsonDocument
 import org.bson.Document
 import org.bson.conversions.Bson
@@ -21,8 +22,6 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.web.multipart.MultipartFile
 import java.io.ByteArrayOutputStream
 import java.lang.String.join
-import javax.servlet.http.HttpServletResponse
-
 
 @RestController
 @RequestMapping("/dbs/{db}/collections/{coll}")

@@ -2,15 +2,15 @@ package com.hejapp.security.filter
 
 import com.hejapp.controller.CookieUtils
 import com.hejapp.security.JwtAuthentication
+import jakarta.servlet.FilterChain
+import jakarta.servlet.http.HttpServletRequest
+import jakarta.servlet.http.HttpServletResponse
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.HttpHeaders.AUTHORIZATION
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.util.StringUtils
 import org.springframework.web.filter.OncePerRequestFilter
 import org.springframework.web.util.WebUtils
-import javax.servlet.FilterChain
-import javax.servlet.http.HttpServletRequest
-import javax.servlet.http.HttpServletResponse
 
 class JwtTokenFilter(
     private val cookieUtils: CookieUtils
