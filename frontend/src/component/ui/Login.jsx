@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { EventEmitter } from "../../eventEmitter"
 import { loadHosts, login } from "../../service/AuthService"
+import { Version } from "./Version"
 
 export default function Login () {
   const [hosts, setHosts] = useState([])
@@ -141,6 +142,7 @@ export default function Login () {
                             </button>
                             )}
                         <p className="mt-12 text-black/50">Made with ❤️ in Germany - <a className="underline" href="https://github.com/Prime1Code/mangui">Github</a></p>
+                        <p className="mt-2 text-xs text-black/20"><Version /></p>
                     </form>
                 </div>
             </main >
