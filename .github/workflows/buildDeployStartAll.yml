@@ -6,12 +6,6 @@ on:
   pull_request:
     branches: [ "master" ]
   workflow_dispatch:
-    inputs:
-      deploy:
-        description: 'Deploy & start'
-        required: false
-        default: 'false'
-        type: boolean
 
 permissions:
   contents: read
@@ -39,8 +33,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: backend-build
-          path: build/libs/*.jar  # Store built backend JAR
-          retention-days: 7
+          path: build/libs/*.jar
 
   frontend:
     needs: backend
@@ -68,12 +61,11 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: frontend-build
-          path: frontend/build  # Store frontend build output
-          retention-days: 7
+          path: frontend/build
 
   deploy_start:
     needs: frontend
-    if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.event.inputs.deploy == 'true')
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
 
     steps:
