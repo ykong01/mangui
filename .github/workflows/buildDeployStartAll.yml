@@ -27,7 +27,7 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: 8.13
-          arguments: bootJar
+          run: ./gradlew bootJar
 
       - name: Upload Backend Build Artifact
         uses: actions/upload-artifact@v4
