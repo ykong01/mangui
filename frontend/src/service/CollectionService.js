@@ -35,7 +35,7 @@ export async function showCollectionContent (action, query, page) {
               database +
               "/collections/" +
               collection +
-              "/find/?query=" +
+              "/find?query=" +
               queryText +
               explain +
               limitText +
