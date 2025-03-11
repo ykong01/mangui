@@ -24,7 +24,7 @@ class AuthenticationController(
     private val applicationContext: ApplicationContext,
     private val environment: Environment,
     private val cookieUtils: CookieUtils,
-    private val jwtUtils: JwtUtils
+    private val jwtUtils: JwtUtils,
 ) : AbstractMongoController(applicationContext) {
 
     @PostMapping("/login")
@@ -46,8 +46,8 @@ class AuthenticationController(
 
     @GetMapping("/logout")
     fun logout(response: HttpServletResponse): ResponseEntity<Void> {
-        val user = SecurityContextHolder.getContext().authentication.principal
-        applicationContext.deleteMongoClient(user as String)
+        val user = SecurityContextHolder.getContext().authentication.name
+        applicationContext.deleteMongoClient(user)
         SecurityContextHolder.clearContext()
         cookieUtils.deleteCookies(response)
         return ResponseEntity.ok().build()

@@ -1,27 +1,43 @@
 package com.hejapp.security
 
-import com.hejapp.controller.CookieUtils
-import com.hejapp.security.filter.JwtTokenFilter
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.scheduling.annotation.EnableScheduling
+import org.springframework.security.authentication.AuthenticationManager
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.http.SessionCreationPolicy.STATELESS
+import org.springframework.security.oauth2.jwt.JwtDecoder
+import org.springframework.security.oauth2.jwt.NimbusJwtDecoder
 import org.springframework.security.web.SecurityFilterChain
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
+import javax.crypto.spec.SecretKeySpec
 
 @Configuration
 @EnableScheduling
 @EnableWebSecurity
 class SecurityConfig(
-    private val unauthorizedHandler: AuthEntryPoint,
-    private val cookieUtils: CookieUtils
+    private val unauthorizedHandler: AuthEntryPoint
 ) {
 
+    @Value("\${app.jwt.secret}")
+    private lateinit var jwtSecret: String
+
     @Bean
-    fun jwtTokenFilter(): JwtTokenFilter {
-        return JwtTokenFilter(cookieUtils)
+    fun authenticationManager(
+        http: HttpSecurity,
+        customMongoAuthenticationProvider: CustomMongoAuthenticationProvider
+    ): AuthenticationManager {
+        return http.getSharedObject(AuthenticationManagerBuilder::class.java)
+            .authenticationProvider(customMongoAuthenticationProvider)
+            .build()
+    }
+
+    @Bean
+    fun jwtDecoder(): JwtDecoder {
+        val secretKey = SecretKeySpec(jwtSecret.toByteArray(), "HmacSHA256")
+        return NimbusJwtDecoder.withSecretKey(secretKey).build()
     }
 
     @Bean
@@ -29,15 +45,19 @@ class SecurityConfig(
         http
             .cors {}
             .csrf { it.disable() }
-            .exceptionHandling { it.authenticationEntryPoint(unauthorizedHandler) }
             .sessionManagement { it.sessionCreationPolicy(STATELESS) }
             .authorizeHttpRequests {
                 it.requestMatchers("/auth/login", "/auth/logout", "/auth/hosts", "/auth/token/obtain").permitAll()
-                it.requestMatchers("/auth/user").fullyAuthenticated()
-                it.anyRequest().fullyAuthenticated()
+                it.anyRequest().hasRole("USER")
             }
-
-        http.addFilterBefore(jwtTokenFilter(), UsernamePasswordAuthenticationFilter::class.java)
+            .oauth2ResourceServer { oauth2 ->
+                oauth2
+                    .bearerTokenResolver(CookieBearerTokenResolver())
+                    .jwt { jwt ->
+                        jwt.jwtAuthenticationConverter(jwtAuthenticationConverter())
+                    }
+            }
+            .exceptionHandling { it.authenticationEntryPoint(unauthorizedHandler) }
 
         return http.build()
     }

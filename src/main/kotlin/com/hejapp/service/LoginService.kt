@@ -6,13 +6,17 @@ import com.hejapp.exception.LoginFailedException
 import com.hejapp.security.JwtUtils
 import com.mongodb.MongoCredential
 import org.slf4j.LoggerFactory
+import org.springframework.security.authentication.AuthenticationManager
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
+import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.stereotype.Service
 import java.util.*
 
 @Service
 class LoginService(
     private val applicationContext: ApplicationContext,
-    private val jwtUtils: JwtUtils
+    private val jwtUtils: JwtUtils,
+    private val authenticationManager: AuthenticationManager
 ) {
     private val logger = LoggerFactory.getLogger(LoginService::class.java)
 
@@ -30,6 +34,10 @@ class LoginService(
             throw LoginFailedException()
         }
 
-        return jwtUtils.generateJwtPair(userId);
+        val authToken = UsernamePasswordAuthenticationToken(userId, password)
+        val authentication = authenticationManager.authenticate(authToken)
+        SecurityContextHolder.getContext().authentication = authentication
+
+        return jwtUtils.generateJwtPair(authentication);
     }
 }

@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice
 class RestExceptionHandler(
     private val cookieUtils: CookieUtils
 ) {
-
     private val logger = LoggerFactory.getLogger(RestExceptionHandler::class.java)
 
     @ExceptionHandler(value = [MongoCommandException::class])

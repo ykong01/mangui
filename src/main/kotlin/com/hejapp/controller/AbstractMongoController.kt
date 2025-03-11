@@ -10,8 +10,8 @@ abstract class AbstractMongoController(
     private val applicationContext: ApplicationContext,
 ) {
     fun getMongoClientFromContext(): MongoClient {
-        val userId: String = SecurityContextHolder.getContext().authentication.principal as String
-        val mongoClient = applicationContext.getMongoClient(userId)
+        val user = SecurityContextHolder.getContext().authentication.name
+        val mongoClient = applicationContext.getMongoClient(user)
         if (mongoClient == null) {
             throw SessionExpiredException()
         } else {
