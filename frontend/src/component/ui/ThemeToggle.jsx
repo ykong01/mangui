@@ -1,7 +1,8 @@
+/* eslint-disable multiline-ternary */
 import React from "react"
 import { useTheme } from "../../ThemeContext"
 
-export default function ThemeToggle() {
+export default function ThemeToggle () {
   const { isDarkMode, toggleTheme } = useTheme()
 
   return (
@@ -38,4 +39,4 @@ export default function ThemeToggle() {
       )}
     </button>
   )
-} 
+}
