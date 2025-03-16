@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { EventEmitter } from "../../eventEmitter"
 import { loadHosts, login } from "../../service/AuthService"
 import { Version } from "./Version"
+import ThemeToggle from "./ThemeToggle"
 
 export default function Login () {
   const [hosts, setHosts] = useState([])
@@ -46,8 +47,11 @@ export default function Login () {
 
   return (
         <>
+            <div className="absolute top-4 right-4">
+                <ThemeToggle />
+            </div>
             <main id="main" className="text-center w-100 max-w-[400px] m-auto">
-                <div className="p-12 bg-white border rounded">
+                <div className="p-12 bg-white dark:bg-dark-card dark:text-dark-text subtle-border rounded">
                     <form onSubmit={handleSubmit} method="post" className="w-full">
                         <img
                             className="mb-3 m-auto"
@@ -60,25 +64,25 @@ export default function Login () {
                         <div className="relative m-auto">
                             <input
                                 type="text"
-                                className="w-full mb-[-1px] block rounded-t-md px-2.5 pb-2 pt-7 text-sm text-gray-900 bg-gray-50 border border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                className="w-full mb-[-1px] block rounded-t-md px-2.5 pb-2 pt-7 text-sm text-gray-900 dark:text-dark-text bg-gray-50 dark:bg-dark-card border border-gray-300 dark:border-gray-700 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                 placeholder=""
                                 name="username"
                             />
-                            <label htmlFor="username" className="absolute text-base text-gray-500 duration-300 transform -translate-y-3 scale-75 top-5 z-10 origin-[0] start-2.5 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3">Username</label>
+                            <label htmlFor="username" className="absolute text-base text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-3 scale-75 top-5 z-10 origin-[0] start-2.5 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3">Username</label>
                         </div>
                         <div className="relative m-auto">
                             <input
                                 type="password"
-                                className="w-full mb-[-1px] block px-2.5 pb-2 pt-7 text-sm text-gray-900 bg-gray-50 border border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                className="w-full mb-[-1px] block px-2.5 pb-2 pt-7 text-sm text-gray-900 dark:text-dark-text bg-gray-50 dark:bg-dark-card border border-gray-300 dark:border-gray-700 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                 name="password"
                                 placeholder=""
                             />
-                            <label htmlFor="password" className="absolute text-base text-gray-500 duration-300 transform -translate-y-3 scale-75 top-5 z-10 origin-[0] start-2.5 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3">Password</label>
+                            <label htmlFor="password" className="absolute text-base text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-3 scale-75 top-5 z-10 origin-[0] start-2.5 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3">Password</label>
                         </div>
                         <div className="relative m-auto">
                             <select
                                 name="hostSelect"
-                                className="w-full pe-8 block appearance-none bg-selectArrow bg-origin-content bg-right-075 bg-no-repeat bg-[length:16px_12px] rounded-b-md px-2.5 pb-4 pt-7 text-sm text-gray-900 bg-gray-50 border border-gray-300 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                className="w-full pe-8 block appearance-none bg-selectArrow bg-origin-content bg-right-075 bg-no-repeat bg-[length:16px_12px] rounded-b-md px-2.5 pb-4 pt-7 text-sm text-gray-900 dark:text-dark-text bg-gray-50 dark:bg-dark-card border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                 aria-label="Select host"
                                 defaultValue={sessionStorage.getItem("url")}
                             >
@@ -96,7 +100,7 @@ export default function Login () {
                                     <option value="error">Error connecting to backend</option>
                                     )}
                             </select>
-                            <label htmlFor="hostSelect" className="absolute text-base text-gray-500 duration-300 transform -translate-y-4 scale-75 top-6 z-10 origin-[0] start-2.5 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">Host</label>
+                            <label htmlFor="hostSelect" className="absolute text-base text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-6 z-10 origin-[0] start-2.5 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">Host</label>
                         </div>
                         {loginError === false
                           ? (
@@ -141,8 +145,8 @@ export default function Login () {
                                   : null}
                             </button>
                             )}
-                        <p className="mt-12 text-black/50">Made with ❤️ in Germany - <a className="underline" href="https://github.com/Prime1Code/mangui">Github</a></p>
-                        <p className="mt-2 text-xs text-black/20"><Version /></p>
+                        <p className="mt-12 text-black/50 dark:text-white/50">Made with ❤️ in Germany - <a className="underline" href="https://github.com/Prime1Code/mangui">Github</a></p>
+                        <p className="mt-2 text-xs text-black/20 dark:text-white/20"><Version /></p>
                     </form>
                 </div>
             </main >

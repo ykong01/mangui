@@ -108,13 +108,13 @@ export default function Result (props) {
             {collectionCount >= 0 && (
                 <>
                     <div className="block w-full mb-1 pt-1 text-decoration-none">
-                        <span className="text-base font-thin">Result: {getDataRange()}</span>
+                        <span className="text-base font-thin dark:text-gray-300">Result: {getDataRange()}</span>
                         <div className="float-end relative min-w-[150px]">
                             <select
                                 id="limitSelect"
                                 name="limitSelect"
                                 onChange={onLimitSelectChange}
-                                className="w-full pe-8 block appearance-none bg-selectArrow bg-origin-content bg-right-075 bg-no-repeat bg-[length:16px_12px] rounded-md px-3 pt-6 pb-2 text-sm text-gray-900 bg-gray-50 border border-gray-300 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                className="w-full pe-8 block appearance-none bg-selectArrow bg-origin-content bg-right-075 bg-no-repeat bg-[length:16px_12px] rounded-md px-3 pt-6 pb-2 text-sm text-gray-900 dark:text-gray-300 bg-gray-50 dark:bg-dark-card border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                 aria-label="Select query limit"
                                 defaultValue={sessionStorage.getItem("queryLimit")}
                             >
@@ -125,21 +125,21 @@ export default function Result (props) {
                             </select>
                             <label
                                 htmlFor="limitSelect"
-                                className="absolute text-base text-gray-500 duration-300 transform -translate-y-4 scale-75 top-5 z-10 origin-[0] start-2.5 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4"
+                                className="absolute text-base text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-5 z-10 origin-[0] start-2.5 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4"
                             >
                                 Items per page
                             </label>
                         </div>
                     </div>
-                    <div className="mb-2 pb-2 border-b">
+                    <div className="mb-2 pb-2 border-b dark:border-gray-700">
                         {currentPage !== 0
                           ? (
                             <>
-                                <button className="pt-0 pb-0 ps-2 pe-2 text-decoration-none" onClick={firstPage}>
+                                <button className="pt-0 pb-0 ps-2 pe-2 text-decoration-none dark:text-gray-300 hover:text-[#009e5d] dark:hover:text-[#00c772]" onClick={firstPage}>
                                     <BackwardIcon className="w-4 h-4 inline" />
                                 </button>
                                 <button
-                                    className="pt-0 pb-0 ps-2 pe-2 btn btn-link ms-2 link-dark text-decoration-none fw-light"
+                                    className="pt-0 pb-0 ps-2 pe-2 btn btn-link ms-2 link-dark text-decoration-none fw-light dark:text-gray-300 hover:text-[#009e5d] dark:hover:text-[#00c772]"
                                     onClick={previousPage}
                                     disabled={currentPage === 0}
                                 >
@@ -152,15 +152,15 @@ export default function Result (props) {
                                 <span className="me-3"></span>
                             </span>
                             )}
-                        <button className="py-0 px-2 ms-2 bg-[#009e5d]/60 rounded-md text-decoration-none text-white" disabled>
+                        <button className="py-0 px-2 ms-2 bg-[#009e5d]/60 rounded-md text-decoration-none text-white dark:bg-[#00c772]/60" disabled>
                             {currentPage + 1}
                         </button>
                         {!isLastPage() && (
                             <>
-                                <button className="py-0 px-2 ms-2 text-decoration-none" onClick={nextPage}>
+                                <button className="py-0 px-2 ms-2 text-decoration-none dark:text-gray-300 hover:text-[#009e5d] dark:hover:text-[#00c772]" onClick={nextPage}>
                                     {isLastPage() ? collectionCount === 0 || collectionCount === undefined ? 1 : Math.ceil(collectionCount / parseInt(sessionStorage.getItem("queryLimit"))) : currentPage + 2}
                                 </button>
-                                <button className="py-0 px-2 ms-2 text-decoration-none" onClick={lastPage}>
+                                <button className="py-0 px-2 ms-2 text-decoration-none dark:text-gray-300 hover:text-[#009e5d] dark:hover:text-[#00c772]" onClick={lastPage}>
                                     <ForwardIcon className="w-4 h-4 inline" />
                                 </button>
                             </>

@@ -31,35 +31,35 @@ export default function IndicesModal ({ open, close, currentPage }) {
     ? (
         <>
             <div className="overlay">
-                <div className="modal">
+                <div className="modal dark:bg-dark-card">
                     <form
                         onSubmit={handleSubmit}
                         method="post"
                     >
-                        <div className="mb-3 text-xl">
+                        <div className="mb-3 text-xl dark:text-dark-text">
                             Add an index
                         </div>
                         <div className="relative">
-                            <input className="w-full block rounded-t-md px-2.5 pb-2 pt-7 text-sm text-gray-900 bg-gray-50 border border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" type="text" placeholder="" name="indexName" required={true} />
-                            <label htmlFor="indexName" className="absolute text-base text-gray-500 duration-300 transform -translate-y-3 scale-75 top-5 z-10 origin-[0] start-2.5 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3">Index name</label>
+                            <input className="w-full block rounded-t-md px-2.5 pb-2 pt-7 text-sm text-gray-900 bg-gray-50 border border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer dark:bg-dark-input dark:text-dark-text dark:border-gray-600" type="text" placeholder="" name="indexName" required={true} />
+                            <label htmlFor="indexName" className="absolute text-base text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-3 scale-75 top-5 z-10 origin-[0] start-2.5 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3">Index name</label>
                         </div>
                         <div className="relative">
-                            <select name="sortOrder" className="mt-[-1px] w-full pe-8 block appearance-none bg-selectArrow bg-origin-content bg-right-075 bg-no-repeat bg-[length:16px_12px] rounded-b-md px-2.5 pb-4 pt-7 text-sm text-gray-900 bg-gray-50 border border-gray-300 focus:outline-none focus:ring-0 focus:border-blue-600 peer" defaultValue={"1"}>
-                                <option value="1">ASC</option>
-                                <option value="-1">DESC</option>
+                            <select name="sortOrder" className="mt-[-1px] w-full pe-8 block appearance-none bg-selectArrow bg-origin-content bg-right-075 bg-no-repeat bg-[length:16px_12px] rounded-b-md px-2.5 pb-4 pt-7 text-sm text-gray-900 bg-gray-50 border border-gray-300 focus:outline-none focus:ring-0 focus:border-blue-600 peer dark:bg-dark-input dark:text-dark-text dark:border-gray-600" defaultValue={"1"}>
+                                <option value="1" className="dark:bg-dark-input dark:text-dark-text">ASC</option>
+                                <option value="-1" className="dark:bg-dark-input dark:text-dark-text">DESC</option>
                             </select>
-                            <label htmlFor="sortOrder" className="absolute text-base text-gray-500 duration-300 transform -translate-y-4 scale-75 top-6 z-10 origin-[0] start-2.5 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">Sort order</label>
+                            <label htmlFor="sortOrder" className="absolute text-base text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-6 z-10 origin-[0] start-2.5 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">Sort order</label>
                         </div>
                         <div className="flex items-center my-2">
-                            <input className="appearance-none border w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2 checked:bg-blue-600 checked:text-white checked:bg-check" type="checkbox" name="unique" />
-                            <label className="ms-2 text-sm text-gray-900" htmlFor="unique">Unique</label>
+                            <input className="appearance-none border w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2 checked:bg-blue-600 checked:text-white checked:bg-check dark:bg-dark-input dark:border-gray-600" type="checkbox" name="unique" />
+                            <label className="ms-2 text-sm text-gray-900 dark:text-dark-text" htmlFor="unique">Unique</label>
                         </div>
                         <div className="flex items-center mb-3">
-                            <input className="appearance-none border w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2 checked:bg-blue-600 checked:text-white checked:bg-check" type="checkbox" name="background" />
-                            <label className="ms-2 text-sm font text-gray-900" htmlFor="background">Background</label>
+                            <input className="appearance-none border w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2 checked:bg-blue-600 checked:text-white checked:bg-check dark:bg-dark-input dark:border-gray-600" type="checkbox" name="background" />
+                            <label className="ms-2 text-sm font text-gray-900 dark:text-dark-text" htmlFor="background">Background</label>
                         </div>
-                        <button className="py-2 px-6 bg-blue-600 text-white rounded-md w-25 m-2" type="submit">Create</button>
-                        <button className="py-2 px-6 bg-black/50 text-white rounded-md w-25 m-2" onClick={closeModal}>Close</button>
+                        <button className="py-2 px-6 bg-blue-600 text-white rounded-md w-25 m-2 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800" type="submit">Create</button>
+                        <button className="py-2 px-6 bg-black/50 text-white rounded-md w-25 m-2 dark:bg-gray-600 hover:bg-black/70 dark:hover:bg-gray-700" onClick={closeModal}>Close</button>
                     </form>
                 </div>
             </div>

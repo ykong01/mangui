@@ -272,14 +272,14 @@ export default function Query (props) {
 
   return (
         <div className="flex w-full">
-            <div className="w-full bg-white border-b pb-3">
+            <div className="w-full bg-white dark:bg-dark-card border-b dark:border-gray-700 pb-3">
                 <form onSubmit={handleSubmit} method="post" className="w-full">
                     <div className="flex">
                         <textarea
                             rows="6"
                             placeholder="_id: ..."
                             style={{ fontSize: "0.8rem", minHeight: "120px" }}
-                            className="me-2 appearance-none border px-[0.375rem] py-[0.5rem] w-full rounded-md font-mono font-light self-start"
+                            className="me-2 appearance-none border dark:border-gray-700 px-[0.375rem] py-[0.5rem] w-full rounded-md font-mono font-light self-start dark:bg-dark-card dark:text-dark-text"
                             name="query"
                             id="query"
                             aria-label="Query"
@@ -292,7 +292,7 @@ export default function Query (props) {
                                 <select
                                     id="fields"
                                     name="fields"
-                                    className="w-full pe-8 block appearance-none bg-selectArrow bg-origin-content bg-right-075 bg-no-repeat bg-[length:16px_12px] rounded-md px-3 pt-6 pb-2 text-sm text-gray-900 bg-gray-50 border border-gray-300 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    className="w-full pe-8 block appearance-none bg-selectArrow bg-origin-content bg-right-075 bg-no-repeat bg-[length:16px_12px] rounded-md px-3 pt-6 pb-2 text-sm text-gray-900 dark:text-dark-text bg-gray-50 dark:bg-dark-card border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                     aria-label="Order by"
                                     onChange={changeOrderBy}
                                     value={orderByField}>
@@ -304,32 +304,32 @@ export default function Query (props) {
                                           : <option value="-1">...</option>
                                     }
                                 </select>
-                                <label htmlFor="fields" className="absolute text-base text-gray-500 duration-300 transform -translate-y-4 scale-75 top-5 z-10 origin-[0] start-2.5 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">Order by</label>
+                                <label htmlFor="fields" className="absolute text-base text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-5 z-10 origin-[0] start-2.5 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">Order by</label>
                             </div>
                             <div className="relative min-w-[150px]">
                                 <select
                                     id="order"
                                     name="order"
-                                    className="w-full pe-8 block appearance-none bg-selectArrow bg-origin-content bg-right-075 bg-no-repeat bg-[length:16px_12px] rounded-md px-3 pt-6 pb-2 text-sm text-gray-900 bg-gray-50 border border-gray-300 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    className="w-full pe-8 block appearance-none bg-selectArrow bg-origin-content bg-right-075 bg-no-repeat bg-[length:16px_12px] rounded-md px-3 pt-6 pb-2 text-sm text-gray-900 dark:text-dark-text bg-gray-50 dark:bg-dark-card border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                     aria-label="Sort order"
                                     onChange={changeSortOrder}
                                     value={sortOrder}>
                                     <option value="ASC">ASC</option>
                                     <option value="DESC">DESC</option>
                                 </select>
-                                <label htmlFor="order" className="absolute text-base text-gray-500 duration-300 transform -translate-y-4 scale-75 top-5 z-10 origin-[0] start-2.5 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">Sort order</label>
+                                <label htmlFor="order" className="absolute text-base text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-5 z-10 origin-[0] start-2.5 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">Sort order</label>
                             </div>
                         </div>
                         <div id="autocompleteContainer" className="absolute hidden"
                             style={{ zIndex: 100, fontSize: "0.8em" }}>
-                            <select id="autocompleteDropdown" className="overflow-auto" onKeyPress={insertSelectedWord}
+                            <select id="autocompleteDropdown" className="overflow-auto dark:bg-dark-card dark:text-dark-text" onKeyPress={insertSelectedWord}
                                 onClick={insertSelectedWord}></select>
                         </div>
                     </div>
                     <div className="w-full my-3">
                         <div className="float-start">
                             <button
-                                className="bg-[#009e5d] py-1 px-6 text-white w-full rounded-sm"
+                                className="bg-[#009e5d] py-1 px-6 text-white w-full rounded-sm hover:bg-[#008a50] dark:bg-[#00a35d] dark:hover:bg-[#008a50]"
                                 name="find"
                                 type="submit"
                             >
@@ -338,7 +338,7 @@ export default function Query (props) {
                         </div>
                         <div className="float-end">
                             <button
-                                className="py-1 px-2 font-light border border-[#009e5d] me-3 text-sm text-[#009e5d] rounded-sm hover:bg-[#009e5d] hover:text-white"
+                                className="py-1 px-2 font-light border border-[#009e5d] me-3 text-sm text-[#009e5d] dark:text-[#00c772] rounded-sm hover:bg-[#009e5d] hover:text-white dark:hover:bg-[#00a35d] dark:hover:text-white"
                                 name="insertDocument"
                                 type="submit"
                             >
@@ -346,14 +346,14 @@ export default function Query (props) {
                             </button>
                             <div className="inline-flex">
                                 <button
-                                    className="py-1 px-2 font-light border border-[#009e5d] text-sm text-[#009e5d] rounded-s-sm hover:bg-[#009e5d] hover:text-white"
+                                    className="py-1 px-2 font-light border border-[#009e5d] text-sm text-[#009e5d] dark:text-[#00c772] rounded-s-sm hover:bg-[#009e5d] hover:text-white dark:hover:bg-[#00a35d] dark:hover:text-white"
                                     name="indices"
                                     type="submit"
                                 >
                                     Indices
                                 </button>
                                 <button
-                                    className="py-1 px-2 font-light border border-[#009e5d] ms-[-1px] me-3 text-sm text-[#009e5d] rounded-e-sm hover:bg-[#009e5d] hover:text-white"
+                                    className="py-1 px-2 font-light border border-[#009e5d] ms-[-1px] me-3 text-sm text-[#009e5d] dark:text-[#00c772] rounded-e-sm hover:bg-[#009e5d] hover:text-white dark:hover:bg-[#00a35d] dark:hover:text-white"
                                     name="createIndex"
                                     type="submit"
                                 >
@@ -361,7 +361,7 @@ export default function Query (props) {
                                 </button>
                             </div>
                             <button
-                                className="py-1 px-2 font-light border border-[#009e5d] me-3 text-sm text-[#009e5d] rounded-sm hover:bg-[#009e5d] hover:text-white"
+                                className="py-1 px-2 font-light border border-[#009e5d] me-3 text-sm text-[#009e5d] dark:text-[#00c772] rounded-sm hover:bg-[#009e5d] hover:text-white dark:hover:bg-[#00a35d] dark:hover:text-white"
                                 name="explain"
                                 type="submit"
                             >
@@ -369,7 +369,7 @@ export default function Query (props) {
                             </button>
                             <div className="inline-flex">
                                 <button
-                                    className="py-1 px-2 font-light border border-[#009e5d] text-sm text-[#009e5d] rounded-sm hover:bg-[#009e5d] hover:text-white"
+                                    className="py-1 px-2 font-light border border-[#009e5d] text-sm text-[#009e5d] dark:text-[#00c772] rounded-sm hover:bg-[#009e5d] hover:text-white dark:hover:bg-[#00a35d] dark:hover:text-white"
                                     name="export"
                                     type="submit"
                                 >
@@ -377,14 +377,14 @@ export default function Query (props) {
                                 </button>
                                 <input type="file" className="hidden" id="file" name="import" accept=".json" onChange={handleFileChange} />
                                 <button
-                                    className="py-1 px-2 font-light border border-[#009e5d] ms-[-1px] text-sm text-[#009e5d] rounded-e-sm hover:bg-[#009e5d] hover:text-white"
+                                    className="py-1 px-2 font-light border border-[#009e5d] ms-[-1px] text-sm text-[#009e5d] dark:text-[#00c772] rounded-e-sm hover:bg-[#009e5d] hover:text-white dark:hover:bg-[#00a35d] dark:hover:text-white"
                                     onClick={handleImportButtonClick}
                                 >
                                     Import
                                 </button>
                             </div>
                             {isAdminDatabase() && <button
-                                className="py-1 px-2 font-light border border-[#009e5d] ms-3 text-sm text-[#009e5d] rounded-sm hover:bg-[#009e5d] hover:text-white"
+                                className="py-1 px-2 font-light border border-[#009e5d] ms-3 text-sm text-[#009e5d] dark:text-[#00c772] rounded-sm hover:bg-[#009e5d] hover:text-white dark:hover:bg-[#00a35d] dark:hover:text-white"
                                 name="createUser"
                                 type="submit"
                             >

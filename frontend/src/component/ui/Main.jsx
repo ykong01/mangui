@@ -50,7 +50,7 @@ export default function Main () {
 
   return (
         <>
-            <main className="h-screen p-8 grid mt-[-80px] min-w-[560px]">
+            <main className="h-screen p-8 grid mt-[-80px] min-w-[560px] dark:bg-dark-bg">
                 <Navigation />
                 <div id="nav_anchor" className="bg-transparent w-[4px] cursor-col-resize"></div>
                 <CollectionFragment />
@@ -61,6 +61,7 @@ export default function Main () {
                 draggable={false}
                 pauseOnHover
                 className="mr-[20px]"
+                theme="colored"
             />
         </>
   )

@@ -208,8 +208,8 @@ export default function ResultItem (props) {
         <div>
             {props.data.map((item, i) => {
               return (
-                    <pre key={i} className="bg-white border mb-5 rounded-sm p-4 relative">
-                        <div style={{ margin: "-10px", fontSize: "0.8em" }} className="font-thin text-black/50">
+                    <pre key={i} className="bg-white dark:bg-dark-card dark:text-dark-text border dark:border-gray-700 mb-5 rounded-sm p-4 relative">
+                        <div style={{ margin: "-10px", fontSize: "0.8em" }} className="font-thin text-black/50 dark:text-white/50">
                             #{props.queryLimit * props.currentPage + i + 1}
                         </div>
                         <div className="flex flex-row">
@@ -218,8 +218,8 @@ export default function ResultItem (props) {
                                   ? (
                                     <ReactJson
                                         src={item}
-                                        style={{ fontSize: "0.8em" }}
-                                        theme="vscode"
+                                        style={{ fontSize: "0.8em", backgroundColor: "transparent" }}
+                                        theme={document.documentElement.classList.contains("dark") ? "monokai" : "rjv-default"}
                                         collapsed={1}
                                         collapseStringsAfterLength={80}
                                     />
@@ -230,7 +230,7 @@ export default function ResultItem (props) {
                                             defaultValue={JSON.stringify(item, undefined, 2)}
                                             rows={10}
                                             style={{ fontSize: "0.8rem", minHeight: "120px" }}
-                                            className="font-mono w-full border rounded-sm"
+                                            className="font-mono w-full border dark:border-gray-700 rounded-sm dark:bg-dark-card dark:text-dark-text"
                                             name="itemText"
                                             id="itemText"
                                             aria-label="Item Text"
@@ -239,7 +239,7 @@ export default function ResultItem (props) {
                                         />
                                         <div id="autocompleteContainerItemText" className="absolute hidden"
                                             style={{ zIndex: 100, fontSize: "0.8em" }}>
-                                            <select id="autocompleteDropdownItemText" className="overflow-auto"
+                                            <select id="autocompleteDropdownItemText" className="overflow-auto dark:bg-dark-card dark:text-dark-text"
                                                 onKeyPress={insertSelectedWordItemText}
                                                 onClick={insertSelectedWordItemText}></select>
                                         </div>
@@ -251,14 +251,14 @@ export default function ResultItem (props) {
                                   ? (
                                     <>
                                         <button
-                                            className="border border-black rounded-md px-1.5 py-1 text-black me-2"
+                                            className="border border-black dark:border-gray-400 rounded-md px-1.5 py-1 text-black dark:text-gray-300 me-2"
                                             name="editItem"
                                             onClick={(e) => handleEdit(e, i)}
                                         >
                                             <PencilIcon className="w-5 h-5 inline" />
                                         </button>
                                         {isAdminDatabase() && <button
-                                            className="border border-black rounded-md px-1.5 py-1 text-black me-2"
+                                            className="border border-black dark:border-gray-400 rounded-md px-1.5 py-1 text-black dark:text-gray-300 me-2"
                                             name="editItem"
                                             onClick={(e) => handleUserEdit(e, item)}
                                         >
@@ -271,7 +271,7 @@ export default function ResultItem (props) {
                                     ? (
                                     <>
                                         <button
-                                            className="border border-black rounded-s-md px-1.5 py-1 ms-3 text-black"
+                                            className="border border-black dark:border-gray-400 rounded-s-md px-1.5 py-1 ms-3 text-black dark:text-gray-300"
                                             name="editItemCancel"
                                             onClick={(e) => handleCancel(e, item)}
                                         >
@@ -292,7 +292,7 @@ export default function ResultItem (props) {
                                 {props.action !== "explain" && showConfirm !== i
                                   ? (
                                     <button
-                                        className="border border-black rounded-md px-1.5 py-1 text-black"
+                                        className="border border-black dark:border-gray-400 rounded-md px-1.5 py-1 text-black dark:text-gray-300"
                                         name="dropItem"
                                         onClick={(e) => handleDrop(e, i)}
                                     >
