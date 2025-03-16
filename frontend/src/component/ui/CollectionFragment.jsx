@@ -37,14 +37,14 @@ export default function CollectionFragment () {
   }
 
   return (
-        <div id="right" className="p-4 overflow-auto border rounded-e-md bg-white dark:bg-dark-card dark:text-dark-text min-w-[490px]">
+        <div id="right" className="p-4 overflow-auto subtle-border rounded-e-md bg-white dark:bg-dark-card dark:text-dark-text min-w-[490px]">
             <div className="flex gap-4">
                 <div className="grow text-decoration-none">
                     <div>
                         <span className="text-2xl font-light">Query collection</span>
                         {collection !== null && collection.length > 0
                           ? (
-                                <div className="inline-block mb-3 ms-2 text-md bg-white dark:bg-dark-card font-thin py-0.5 px-1 border dark:border-gray-700 rounded-md">
+                                <div className="inline-block mb-3 ms-2 text-md bg-white dark:bg-dark-card font-thin py-0.5 px-1 subtle-border rounded-md">
                                     <CircleStackIcon className="w-4 h-4 me-1 inline" />{database}
                                     <ChevronRightIcon className="w-4 h-4 inline" />
                                     <TableCellsIcon className="w-4 h-4 me-1 inline" />{collection}
@@ -53,14 +53,14 @@ export default function CollectionFragment () {
                           : null}
                     </div>
                 </div>
-                <div className="self-center flex border dark:border-gray-700 text-xl font-thin bg-white dark:bg-dark-card rounded-md py-0.5 px-1 mb-3">
+                <div className="self-center flex subtle-border dark:border-gray-700 text-xl font-thin bg-white dark:bg-dark-card rounded-md py-0.5 px-1 mb-3">
                     <UserCircleIcon className="w-5 me-1" />{ user }
                 </div>
                 <button
                     onClick={logoutUser}
                     className="mb-3 text-decoration-none"
                 >
-                    <div className="text-xl font-thin flex bg-white dark:bg-dark-card border dark:border-gray-700 rounded-md py-0.5 px-1 items-center">
+                    <div className="text-xl font-thin flex bg-white dark:bg-dark-card subtle-border dark:border-gray-700 rounded-md py-0.5 px-1 items-center">
                         <ArrowRightEndOnRectangleIcon className="w-6 me-1" />Logout
                     </div>
                 </button>

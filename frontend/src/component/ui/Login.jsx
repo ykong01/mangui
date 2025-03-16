@@ -51,7 +51,7 @@ export default function Login () {
                 <ThemeToggle />
             </div>
             <main id="main" className="text-center w-100 max-w-[400px] m-auto">
-                <div className="p-12 bg-white dark:bg-dark-card dark:text-dark-text border rounded">
+                <div className="p-12 bg-white dark:bg-dark-card dark:text-dark-text subtle-border rounded">
                     <form onSubmit={handleSubmit} method="post" className="w-full">
                         <img
                             className="mb-3 m-auto"

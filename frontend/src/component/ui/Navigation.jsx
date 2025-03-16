@@ -7,7 +7,7 @@ export function Navigation () {
   const [isDatabaseModalOpen, setIsDatabaseModalOpen] = useState(false)
 
   return (
-        <nav id="left" className="border rounded-s-md bg-white dark:bg-dark-card dark:text-dark-text min-[930px]:max-w-[500px]">
+        <nav id="left" className="subtle-border rounded-s-md bg-white dark:bg-dark-card dark:text-dark-text min-[930px]:max-w-[500px]">
             <div className="p-4 overflow-auto h-full">
                 <div className="flex gap-4 items-center justify-center pt-8 mb-10">
                     <img

@@ -22,3 +22,8 @@ body {
 #root {
   width: 100%;
 }
+
+/* Add subtle border styling for all panels/cards */
+.subtle-border {
+  @apply border border-gray-100 dark:border-gray-800 shadow-sm;
+}
