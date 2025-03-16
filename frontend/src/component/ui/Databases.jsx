@@ -49,7 +49,7 @@ export default function Databases () {
             {databases != null && databases.map((item, i) => (
                 <li className="mb-1" key={i}>
                     <button
-                        className="btn-toggle w-fit items-center text-decoration-none mb-1"
+                        className="btn-toggle w-fit items-center text-decoration-none mb-1 dark:text-dark-text"
                         aria-expanded="false"
                         data-collapse-toggle={`db-${item.name}`}
                         onClick={toggleCollapse}
