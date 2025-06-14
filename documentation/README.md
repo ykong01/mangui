@@ -50,7 +50,7 @@ cd mangui
 
 ### Using pre-built Docker images
 
-Create a folder structure like this. <br>
+Your folder structure should already look like this. <br>
 The project comes with all the `necessary` files in the corresponding folders.
 
 ```
@@ -67,7 +67,7 @@ The project comes with all the `necessary` files in the corresponding folders.
 
 Start your Mangui app with the following CLI command
 ```sh
-Docker-compose -f docker-compose-server-hub.yml up --force-recreate -d
+docker compose -f docker-compose-server-hub.yml up --force-recreate -d
 ```
 
 ### Troubleshooting Connectivity to Your Mangui Instance
