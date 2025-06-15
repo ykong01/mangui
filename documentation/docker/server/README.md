@@ -1,4 +1,4 @@
-### [back](../README.md)
+### [back](../../README.md)
 
 # Getting Started
 
@@ -77,4 +77,4 @@ If you're experiencing issues connecting to your Mangui instance, consider the f
 
 ## And thats it! 🎉 Have fun with Mangui <img src="../screenshots/ManguiLogo.svg" width="16px"/>
 
-### [back](../README.md)
+### [back](../../README.md)

@@ -1,4 +1,4 @@
-### [back](../README.md)
+### [back](../../README.md)
 
 # Getting Started
 
@@ -47,4 +47,4 @@ docker-compose -f docker-compose-local-hub.yml up --force-recreate -d
 
 ## And thats it! 🎉 Have fun with Mangui <img src="../screenshots/ManguiLogo.svg" width="16px"/>
 
-### [back](../README.md)
+### [back](../../README.md)
