@@ -78,6 +78,7 @@ If you're experiencing issues connecting to your Mangui instance, consider the f
 - **HTTPS Access:** Ensure that your Mangui frontend is accessible via HTTPS (e.g., `https://subdomain.yourdomain.com/`).
 - **MongoDB Port Mapping:** Confirm that the port mapping for your MongoDB container is correctly configured (e.g., `127.0.0.1:27017->27018`).
 - **Docker Network:** Make sure all containers are part of the same Docker network. By default, the setup script creates a network named `mangui_mangui`. This network must be explicitly defined for each container in your `docker-compose-server-hub.yml` file.
+- **Cookies:** Make sure, that your website connection is secured via HTTPS, otherwise cookies won't work, because they include the `Secure` attribute
 
 ## And thats it! 🎉 Have fun with Mangui <img src="../screenshots/ManguiLogo.svg" width="16px"/>
 
