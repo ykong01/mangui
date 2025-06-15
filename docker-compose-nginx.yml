@@ -16,7 +16,7 @@ services:
     environment:
       - DHPARAM_SKIP=true
     networks:
-      - mangui_mangui
+      - mangui
     restart: always
 
   lets-encrypt:
@@ -33,7 +33,7 @@ services:
     depends_on:
       - nginx-proxy
     networks:
-      - mangui_mangui
+      - mangui
     restart: always
 
 volumes:
@@ -44,5 +44,5 @@ volumes:
   acme:
 
 networks:
-  mangui_mangui:
-    external: true
+  mangui:
+    
