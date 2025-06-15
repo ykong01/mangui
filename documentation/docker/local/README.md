@@ -33,7 +33,7 @@ file (`MONGO_INITDB_ROOT_USERNAME` and `MONGO_INITDB_ROOT_PASSWORD`). <br>
 
 ## Pre-Built Docker images
 
-If you want to use pre-built Docker images, then replace this line inside `./createDockerImagesAndRunLocally`
+If you want to use pre-built Docker images, then replace this line inside `createDockerImagesAndRunLocally.sh`
 
 ```sh
 docker-compose -f docker-compose-local.yml up --force-recreate -d
