@@ -1,4 +1,3 @@
-
 services:
   mongo:
     image: mongo:latest
@@ -20,8 +19,8 @@ services:
     environment:
       - VIRTUAL_HOST=${MANGUI_VHOST}
       - VIRTUAL_PORT=8080
-      - VIRTUAL_DEST=/
-      - VIRTUAL_PATH=/api/
+      - VIRTUAL_DEST=/api
+      - VIRTUAL_PATH=/api
       - MANGUI_MAX_FILE_SIZE=50MB
       - MANGUI_AVAILABLE_HOSTS=${MANGUI_HOSTS}
       - MANGUI_JWT_SECRET=${MANGUI_JWT_SECRET_VALUE}

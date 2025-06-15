@@ -21,7 +21,7 @@ services:
     environment:
       - VIRTUAL_HOST=${MANGUI_VHOST}
       - VIRTUAL_PORT=8080
-      - VIRTUAL_DEST=/
+      - VIRTUAL_DEST=/api
       - VIRTUAL_PATH=/api/
       - MANGUI_MAX_FILE_SIZE=50MB
       - MANGUI_AVAILABLE_HOSTS=${MANGUI_HOSTS}
