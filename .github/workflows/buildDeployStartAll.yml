@@ -83,7 +83,7 @@ jobs:
 
       - name: Build and Push Frontend Docker Image
         run: |
-          docker build -t prime1docker/mangui-frontend:latest -f dockerfile ./frontend
+          docker build -t prime1docker/mangui-frontend:latest -f dockerfile .
           docker push prime1docker/mangui-frontend:latest
 
   deploy_start:
