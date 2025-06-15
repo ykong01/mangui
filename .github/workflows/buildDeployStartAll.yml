@@ -37,6 +37,14 @@ jobs:
           name: backend-build
           path: build/libs/*.jar
 
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u prime1docker --password-stdin
+
+      - name: Build and Push Backend Docker Image
+        run: |
+          docker build -t prime1docker/mangui-backend:latest -f dockerfile .
+          docker push prime1docker/mangui-backend:latest
+
   frontend:
     needs: backend
     runs-on: ubuntu-latest
@@ -69,6 +77,14 @@ jobs:
         with:
           name: frontend-build
           path: frontend/build
+
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u prime1docker --password-stdin
+
+      - name: Build and Push Frontend Docker Image
+        run: |
+          docker build -t prime1docker/mangui-frontend:latest -f dockerfile ./frontend
+          docker push prime1docker/mangui-frontend:latest
 
   deploy_start:
     needs: frontend
