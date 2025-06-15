@@ -65,6 +65,31 @@ The project comes with all the `necessary` files in the corresponding folders.
 │  │   └── <vhost>_location
 ```
 
+> [!IMPORTANT]  
+> You have to rename the `<vhost>_location` file to your `MANGUI_VHOST` or `VIRTUAL_HOST` value.
+
+> [!NOTE]  
+> Edit the `client_max_body_size.conf` file to set the max upload size for file imports via the web app.
+> The size has to match the value `MANGUI_MAX_FILE_SIZE` in the `docker-compose-server-hub.yml` file (see below).
+
+Edit the `.env` file to configure the necessary properties for the backend app and containers.<br>
+
+```sh
+nano .env
+```
+
+`Optionally` edit the `docker-compose-server.yml` file to configure volumes or ports if needed.
+<details>
+  <summary><strong>Optional</strong></summary>
+
+```sh
+nano docker-compose-server.yml
+```
+
+</details>
+
+### Final step
+
 Start your Mangui app with the following CLI command
 ```sh
 docker compose -f docker-compose-server-hub.yml up --force-recreate -d
@@ -138,11 +163,10 @@ nano createDockerImagesAndRun.sh
 
 > [!IMPORTANT]  
 > You have to rename the `<vhost>_location` file to your `MANGUI_VHOST` or `VIRTUAL_HOST` value.
-> It contains the proxy cookie path to ensure transfer of cookies between frontend and backend.
 
 > [!NOTE]  
 > Edit the `client_max_body_size.conf` file to set the max upload size for file imports via the web app.
-> The size has to match the value `MANGUI_MAX_FILE_SIZE` in the `Docker-compose-server.yml` file (see below).
+> The size has to match the value `MANGUI_MAX_FILE_SIZE` in the `docker-compose-server.yml` file (see below).
 
 
 Edit the `.env` file to configure the necessary properties for the backend app and containers.<br>
