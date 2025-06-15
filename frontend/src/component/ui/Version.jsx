@@ -1,7 +1,7 @@
 import React from "react"
 
-export function Version () {
-  const version = process.env.REACT_APP_VERSION || "local"
+export function Version() {
+    const version = import.meta.env.VITE_VERSION || "local"
 
-  return (<div>Version: {version}</div>)
+    return (<div>Version: {version}</div>)
 }

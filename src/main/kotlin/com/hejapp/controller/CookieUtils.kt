@@ -58,8 +58,9 @@ class CookieUtils {
     }
 
     companion object {
-        const val AT_PATH = "/dbs"
-        const val USER_PATH = "/auth/user"
-        const val RT_PATH = "/auth/token/obtain"
+        private const val BASE_PATH = "/api"
+        const val AT_PATH = "$BASE_PATH/dbs"
+        const val USER_PATH = "$BASE_PATH/auth/user"
+        const val RT_PATH = "$BASE_PATH/auth/token/obtain"
     }
 }
