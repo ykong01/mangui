@@ -66,6 +66,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Dependencies / Credits
 
+- **vite**: [Github Repository](https://github.com/vitejs/vite)
 - **react18-json-view**: [GitHub Repository](https://github.com/YYsuni/react18-json-view/)
 - **react-toastify**: [GitHub Repository](https://github.com/fkhadra/react-toastify)
 - **react-router**: [GitHub Repository](https://github.com/remix-run/react-router)
