@@ -1,28 +1,10 @@
 #version: '3.8'
 
 services:
-  mongo:
-    image: mongo:latest
-    container_name: mongo
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
-      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
-      - MONGO_INITDB_DATABASE=admin
-    ports:
-      - "127.0.0.1:27017:27017"
-    networks:
-      - mangui
-
   mangui-backend:
     image: prime1docker/mangui-backend:latest
     container_name: mangui-backend
-    depends_on:
-      - mongo
     environment:
-      - VIRTUAL_HOST=${MANGUI_VHOST}
-      - VIRTUAL_PORT=8080
-      - VIRTUAL_DEST=/api
-      - VIRTUAL_PATH=/api/
       - MANGUI_MAX_FILE_SIZE=50MB
       - MANGUI_AVAILABLE_HOSTS=${MANGUI_HOSTS}
       - MANGUI_JWT_SECRET=${MANGUI_JWT_SECRET_VALUE}
@@ -35,62 +17,9 @@ services:
     container_name: mangui-frontend
     depends_on:
       - mangui-backend
-    ports:
-      - "3000"
-    environment:
-      - LETSENCRYPT_HOST=${MANGUI_VHOST}
-      - VIRTUAL_HOST=${MANGUI_VHOST}
-      - VIRTUAL_PORT=3000
-      - VIRTUAL_PATH=/
     networks:
       - mangui
     restart: always
-
-  nginx-proxy:
-    image: nginxproxy/nginx-proxy
-    container_name: nginx-proxy
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ${PWD}/conf:/etc/nginx/conf.d
-      - ${PWD}/vhost:/etc/nginx/vhost.d:rw
-      - html:/usr/share/nginx/html
-      - ./certs:/etc/nginx/certs:ro
-      - /var/run/docker.sock:/tmp/docker.sock:ro
-    environment:
-      - DHPARAM_SKIP=true
-    depends_on:
-      - mangui-backend
-      - mangui-frontend
-    networks:
-      - mangui
-    restart: always
-
-  lets-encrypt:
-    image: nginxproxy/acme-companion
-    container_name: lets-encrypt
-    volumes_from:
-      - nginx-proxy
-    volumes:
-      - ./certs:/etc/nginx/certs:rw
-      - acme:/etc/acme.sh
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-    environment:
-      - DEFAULT_EMAIL=${LETS_ENCRYPT_MAIL}
-    depends_on:
-      - nginx-proxy
-    networks:
-      - mangui
-    restart: always
-
-volumes:
-  conf:
-  vhost:
-  html:
-  certs:
-  acme:
 
 networks:
   mangui:
-    
