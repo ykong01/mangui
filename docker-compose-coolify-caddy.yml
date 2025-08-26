@@ -27,13 +27,6 @@ services:
     networks:
       - mangui
     restart: always
-    labels:
-      # Caddy labels for reverse proxy
-      - caddy=${MANGUI_DOMAIN:-localhost}
-      - caddy.@api.path=/api/*
-      - caddy.@api.reverse_proxy={{upstreams 8081}}
-      - caddy.encode=zstd gzip
-      - caddy.header=-Server
 
   mangui-frontend:
     image: prime1docker/mangui-frontend:latest
@@ -45,14 +38,6 @@ services:
     networks:
       - mangui
     restart: always
-    labels:
-      # Caddy labels for reverse proxy
-      - caddy=${MANGUI_DOMAIN:-localhost}
-      - caddy.reverse_proxy={{upstreams 3000}}
-      - caddy.encode=zstd gzip
-      - caddy.header=-Server
-      - caddy.try_files={path} /index.html
 
 networks:
-  mangui:
-    external: true
+  mangui
