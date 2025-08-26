@@ -1,16 +1,16 @@
 services:
-  mongo:
-    image: mongo:latest
-    container_name: mongo
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
-      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
-      - MONGO_INITDB_DATABASE=admin
-    ports:
-      - "127.0.0.1:27017:27017"
-    networks:
-      - mangui
-    restart: unless-stopped
+  # mongo:
+  #   image: mongo:latest
+  #   container_name: mongo
+  #   environment:
+  #     - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+  #     - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+  #     - MONGO_INITDB_DATABASE=admin
+  #   ports:
+  #     - "127.0.0.1:27017:27017"
+  #   networks:
+  #     - mangui
+  #   restart: unless-stopped
 
   mangui-backend:
     image: prime1docker/mangui-backend:latest
