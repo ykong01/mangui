@@ -14,7 +14,7 @@ export default defineConfig(() => {
     server: {
       port: 3000,
       proxy: {
-        '/api': 'http://localhost:8100',
+        '/api': 'http://localhost:8081',
       },
     },
     plugins: [react()],
