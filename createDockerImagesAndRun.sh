@@ -2,7 +2,7 @@
 cd mangui/be
 docker build -t mangui-backend .
 # frontend (name != local, because gh action secret)
-cd ../nginx_fe
+cd ../fe
 docker build -t mangui-frontend .
 # upload tags
 docker tag mangui-frontend:latest prime1docker/mangui-frontend:latest
