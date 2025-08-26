@@ -2,7 +2,9 @@
 
 services:
   mangui-backend:
-    image: prime1docker/mangui-backend:latest
+    build:
+      context: .
+      dockerfile: dockerfile
     container_name: mangui-backend
     environment:
       - MANGUI_MAX_FILE_SIZE=50MB
@@ -13,7 +15,9 @@ services:
     restart: always
 
   mangui-frontend:
-    image: prime1docker/mangui-frontend:latest
+    build:
+      context: ./frontend
+      dockerfile: dockerfile
     container_name: mangui-frontend
     depends_on:
       - mangui-backend
