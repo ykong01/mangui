@@ -16,8 +16,6 @@ services:
       - MANGUI_VHOST=${MANGUI_VHOST}
       - MANGUI_HOSTS=${MANGUI_HOSTS}
       - MANGUI_JWT_SECRET_VALUE=${MANGUI_JWT_SECRET_VALUE}
-    ports:
-      - "8081:8081"  # Using 8081 instead of 8080 to avoid conflicts
     networks:
       - mangui
     restart: always
