@@ -40,4 +40,4 @@ services:
     restart: always
 
 networks:
-  mangui
+  mangui:
