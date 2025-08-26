@@ -1,4 +1,5 @@
-#version: '3.8'
+# Docker Compose configuration for Coolify with Caddy proxy
+# Ports 80, 443, and 8080 are reserved by Coolify/Caddy
 
 services:
   mangui-backend:
@@ -12,9 +13,21 @@ services:
       - MANGUI_MAX_FILE_SIZE=50MB
       - MANGUI_AVAILABLE_HOSTS=${MANGUI_HOSTS}
       - MANGUI_JWT_SECRET=${MANGUI_JWT_SECRET_VALUE}
+      - MANGUI_VHOST=${MANGUI_VHOST}
+      - MANGUI_HOSTS=${MANGUI_HOSTS}
+      - MANGUI_JWT_SECRET_VALUE=${MANGUI_JWT_SECRET_VALUE}
+    ports:
+      - "8081:8081"  # Using 8081 instead of 8080 to avoid conflicts
     networks:
       - mangui
     restart: always
+    labels:
+      # Caddy labels for API routing
+      - caddy=${MANGUI_DOMAIN:-${MANGUI_VHOST}}
+      - caddy.handle_path=/api/*
+      - caddy.handle_path.0_reverse_proxy={{upstreams 8081}}
+      - caddy.encode=zstd gzip
+      - caddy.header=-Server
 
   mangui-frontend:
     build:

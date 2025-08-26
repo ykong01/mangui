@@ -1,0 +1,58 @@
+services:
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+      - MONGO_INITDB_DATABASE=admin
+    ports:
+      - "127.0.0.1:27017:27017"
+    networks:
+      - mangui
+    restart: unless-stopped
+
+  mangui-backend:
+    image: prime1docker/mangui-backend:latest
+    container_name: mangui-backend
+    depends_on:
+      - mongo
+    environment:
+      - MANGUI_MAX_FILE_SIZE=50MB
+      - MANGUI_AVAILABLE_HOSTS=${MANGUI_HOSTS}
+      - MANGUI_JWT_SECRET=${MANGUI_JWT_SECRET_VALUE}
+      - SERVER_PORT=8081  # Using different port to avoid conflict
+    ports:
+      - "8081:8081"  # Expose on 8081 instead of 8080
+    networks:
+      - mangui
+    restart: always
+    labels:
+      # Caddy labels for reverse proxy
+      - caddy=${MANGUI_DOMAIN:-localhost}
+      - caddy.@api.path=/api/*
+      - caddy.@api.reverse_proxy={{upstreams 8081}}
+      - caddy.encode=zstd gzip
+      - caddy.header=-Server
+
+  mangui-frontend:
+    image: prime1docker/mangui-frontend:latest
+    container_name: mangui-frontend
+    depends_on:
+      - mangui-backend
+    ports:
+      - "3000:3000"
+    networks:
+      - mangui
+    restart: always
+    labels:
+      # Caddy labels for reverse proxy
+      - caddy=${MANGUI_DOMAIN:-localhost}
+      - caddy.reverse_proxy={{upstreams 3000}}
+      - caddy.encode=zstd gzip
+      - caddy.header=-Server
+      - caddy.try_files={path} /index.html
+
+networks:
+  mangui:
+    external: true
